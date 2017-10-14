@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :users
+
+  resources :categories do
+    resources :products
+  end
+
+  resources :products
+  
   get 'pages/home'
 
   get 'pages/about'
