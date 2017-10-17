@@ -15,4 +15,5 @@
 //= require materialize
 //= require materialize-sprockets
 //= require rails-ujs
+//= require toastr
 //= require_tree .
