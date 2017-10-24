@@ -48,6 +48,29 @@ gem 'omniauth-twitter', '~> 1.4'
 
 gem 'recaptcha', require: 'recaptcha/rails'
 
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+
+gem 'active_model_otp'
+gem 'rqrcode'
+gem 'barby'
+
+gem 'activeadmin', '1.0.0'
+gem 'ckeditor', '4.2.4'
+gem 'carrierwave', '1.2.1'
+gem 'fog', '1.42.0'
+gem 'mini_magick', '4.8.0'
+gem 'html_truncator', '0.4.1'
+gem 'will_paginate', '3.1.6'
+
+gem 'active_admin-sortable_tree', '~> 1.0'
+
+gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+gem 'paperclip', '~> 5.1'
+
+gem 'babosa', '~> 1.0', '>= 1.0.2'
+
+gem 'friendly_id', '5.2.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -66,4 +89,7 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'countries'

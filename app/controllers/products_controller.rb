@@ -1,10 +1,50 @@
 class ProductsController < ApplicationController
+  require 'will_paginate/array'
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+
+  def price_up
+    @products = Product.all.order('price ASC')
+
+    @products = @products.paginate(page: params[:page], per_page: 9)
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def price_down
+    @products = Product.all.order('price DESC')
+
+    @products = @products.paginate(page: params[:page], per_page: 9)
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def search
+    search_text = params[:search_text]
+
+    unless search_text.blank?
+      @products = Product.where('name LIKE ? OR content LIKE ? OR tags LIKE ?', "%#{search_text}%", "%#{search_text}%", "%#{search_text}%").order('created_at DESC')
+    end
+
+    if @products.present?
+      @products = @products.paginate(page: params[:page], per_page: 9)
+    end
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.order('id desc')
+
+    @products = @products.paginate(page: params[:page], per_page: 9)
   end
 
   # GET /products/1

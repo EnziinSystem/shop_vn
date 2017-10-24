@@ -1,11 +1,19 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :confirmable, :timeoutable, :lockable
 
+  has_one_time_password
+  enum otp_module: {disabled: 0, enabled: 1}, _prefix: true
+  attr_accessor :otp_code_token
+
+  validates :name, presence: true, length: {minimum: 3, maximum: 25}
+
+  after_create :send_email_welcome
+
+  def send_email_welcome
+    ShopMailer.new_user(self).deliver
+  end
 
   def self.find_for_google_oauth2(provider, uid, name, email, signed_in_resource = nil)
     user = User.where(:provider => provider, :uid => uid).first

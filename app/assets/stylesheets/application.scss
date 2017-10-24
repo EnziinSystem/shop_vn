@@ -19,6 +19,21 @@ main {
 }
 
 @media only screen and (min-width: 320px) {
+
+  #price-product {
+    font-size: 18px;
+  }
+
+  .input-field > select {
+    pointer-events: all;
+    height: 50px;
+    opacity: 1;
+  }
+
+  #input-for-country {
+    height: 60px;
+  }
+
   #note-exist-email {
     color: red;
     margin-left: 10px;
@@ -217,7 +232,7 @@ main {
     color: white;
   }
 
-  .item_course_video_student {
+  .item-feature-product {
     padding: 5px 5px 5px 8px;
     line-height: 38px;
     font-size: 14px;
@@ -780,7 +795,7 @@ main {
     margin-bottom: 40px;
   }
 
-  #about {
+  #show-info-product {
     padding: 20px 30px;
   }
 
@@ -1073,6 +1088,7 @@ main {
 
   .card .card-content .card-title {
     line-height: 1.2;
+    min-height: 50px;
   }
 
   #customize-card-title {
@@ -1090,7 +1106,7 @@ main {
     font-weight: bold;
   }
 
-  .list-course-video-students {
+  .list-features-product {
     margin-top: 0;
     margin-bottom: 0;
   }

@@ -1,0 +1,23 @@
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+.cke_chrome {
+  width: 79.5% !important;
+  overflow: hidden;
+}
+
+table.index_table td {
+  font-size: 14px;
+}
+
+table.index_table tr {
+  font-size: 14px;
+}
+
+#header ul.tabs > li {
+  font-size: 14px;
+}
+
+.download_links {
+  font-size: 14px;
+}
