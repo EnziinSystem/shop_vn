@@ -1,3 +1,47 @@
+<% content_for :head do %>
+    <html itemscope itemtype="https://schema.org/Article">
+
+    <title><%= @product.name %> | SuperShop</title>
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="<%= @product.name %>">
+    <meta itemprop="description" content="<%= @product.short_content %>">
+    <% if @product.image.url.include? 'http' %>
+        <meta itemprop="image" content="<%= @product.image.url %>">
+    <% else %>
+        <meta itemprop="image" content="https:<%= @product.image.url %>">
+    <% end %>
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@enziin.com">
+    <meta name="twitter:title" content="<%= @product.name %>">
+    <meta name="twitter:description" content="<%= @product.short_content %>">
+    <meta name="twitter:creator" content="@Shop">
+    <% if @product.image.url.include? 'http' %>
+        <meta name="twitter:image:src" content="<%= @product.image.url %>">
+    <% else %>
+        <meta name="twitter:image:src" content="https:<%= @product.image.url %>">
+    <% end %>
+
+    <!-- Open Graph data -->
+    <meta property="fb:app_id" content="<%= ENV['FACEBOOK_APP_ID_SHARE_OG_META'] %>"/>
+    <meta property="og:site_name" content="Enziin Academy">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="<%= @product.name %>">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:description" content="<%= @product.short_content %>">
+    <% if @product.image.url.include? 'http' %>
+        <meta property="og:image" content="<%= @product.image.url %>">
+    <% else %>
+        <meta property="og:image" content="https:<%= @product.image.url %>">
+    <% end %>
+
+    <meta property="article:published_time" content="<%= @product.created_at %>"/>
+    <meta property="article:modified_time" content="<%= @product.updated_at %>"/>
+    <meta property="article:tag" content="<%= @product.tags %>"/>
+<% end %>
+
 <div class="container" id="customize-home-container">
   <div class="row"></div>
   <div class="row"></div>
@@ -11,16 +55,32 @@
             </div>
 
             <div class="center container-price">
-              <div class="price-text-course">
+              <% if !@product.sale_time.blank? && (@product.price < @product.older_price) && (@product.sale_time > Time.now) %>
+                  <div class="price-text-course">
+                    <p>
+                      <span id="price-current-product">$<%= @product.price.to_s %></span>
+                      <span id="older-price-product">$<%= @product.older_price.to_s %></span>
+                      <span id="discount-text">
+                      <%= @product.percent_sale_off %>
+                    </span>
+                    </p>
+
+                    <p class="wrapper-count-down">
+                      <span id="message-sale-off-product"></span>
+                    </p>
+                  </div>
+              <% else %>
+                  <div class="price-text-course">
                 <span id="price-current-product">
                     $<%= @product.price.to_s %>
                 </span>
-              </div>
+                  </div>
+              <% end %>
             </div>
 
             <div class="card-action center">
               <div class="container-payment-button">
-                <%= form_tag '#', remote: true, method: :post do %>
+                <%= form_tag order_items_path(product_id: @product.id), remote: true, method: :post do %>
                     <%= submit_tag('Add to Cart', class: 'btn pink darken-2 paybutton', name: 'submit') %>
                 <% end %>
               </div>
@@ -77,3 +137,25 @@
       </div>
   <% end %>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+        $('.modal').modal();
+
+        <% if (!@product.sale_time.blank? && (@product.sale_time > Time.now)) %>
+        $('#message-sale-off-product').countdown({
+            until: new Date('<%= @product.sale_time.to_s.gsub! '-', '/' %>'),
+            padZeroes: true
+        });
+        <% end %>
+    });
+</script>
+
+
+
+
+
+
+
+

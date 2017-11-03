@@ -1,56 +1,13 @@
 <div class="slider row">
   <ul class="slides">
-    <li>
-      <%= image_tag 'slider-1.jpg', style: 'width: 100%; height: 100%' %>
-      <div class="caption left-align" style="top: 3%;">
-        <h3>SuperShop</h3>
-        <h5>Sell everything</h5>
-        <h5>Ship to door</h5>
-        <h5>Protect buyer</h5>
-        <h5>Commitment to refund</h5>
-      </div>
-    </li>
-
-    <li>
-      <%= image_tag 'slider-2.jpg', style: 'width: 100%; height: 100%' %>
-      <div class="caption left-align" style="top: 3%;">
-        <h3>Payment Online</h3>
-        <h5>Support all method</h5>
-        <h5>Credit card</h5>
-        <h5>Paypal</h5>
-        <h5>Internet Banking</h5>
-      </div>
-    </li>
-
-    <li>
-      <%= image_tag 'slider-3.jpg', style: 'width: 100%; height: 100%' %>
-      <div class="caption left-align" style="top: 3%;">
-        <h3>Technology goods</h3>
-        <h5>IT components</h5>
-        <h5>Memory devices</h5>
-        <h5>Mainboard</h5>
-      </div>
-    </li>
-
-    <li>
-      <%= image_tag 'slider-4.jpg', style: 'width: 100%; height: 100%' %>
-      <div class="caption left-align" style="top: 3%;">
-        <h3>Industrial Machine</h3>
-        <h5>Miller machine</h5>
-        <h5>Drill machine</h5>
-        <h5>Mechanical components</h5>
-      </div>
-    </li>
-
-    <li>
-      <%= image_tag 'slider-5.jpg', style: 'width: 100%; height: 100%' %>
-      <div class="caption left-align" style="top: 3%;">
-        <h3>Book Store</h3>
-        <h5>eBook</h5>
-        <h5>Hard Copy</h5>
-        <h5>Read online</h5>
-      </div>
-    </li>
+    <%= @slides.each do |slide| %>
+        <li>
+          <%= image_tag slide.image, style: 'width: 100%; height: 100%' %>
+          <div class="caption <%= slide.align %>" style="top: 3%;">
+            <%= slide.content.html_safe %>
+          </div>
+        </li>
+    <% end %>
   </ul>
 </div>
 

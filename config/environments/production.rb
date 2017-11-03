@@ -90,4 +90,53 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.active_job.queue_adapter = :sidekiq
+
+  config.active_job.queue_name_prefix = 'shop'
+
+  config.active_job.queue_name_delimiter = "_"
+
+
+  config.paperclip_defaults = {
+      storage: :fog,
+      fog_credentials: {
+          provider: 'Local',
+          local_root: "#{Rails.root}/public"
+      },
+      fog_directory: '',
+      fog_host: ''
+  }
+
+  # config.paperclip_defaults = {
+  #     storage: :s3,
+  #     s3_credentials: {
+  #         bucket: ENV["AWS_S3_BUCKET"],
+  #         access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+  #         secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
+  #         s3_region: ENV["AWS_S3_REGION"]
+  #     }
+  # }
+
+  config.action_mailer.default_url_options = {host: 'shop.com'}
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'shop.com',
+      user_name: 'oceandemy@gmail.com',
+      password: 'mcpmqfyfutrtfqcp',
+      authentication: 'plain',
+      enable_starttls_auto: true
+  }
+
+  # config.action_mailer.smtp_settings = {
+  #     address: ENV['AWS_SES_SMTP'],
+  #     port: 587,
+  #     enable_starttls_auto: true,
+  #     user_name: ENV['AWS_SES_USERNAME'],
+  #     password: ENV['AWS_SES_PASSWORD']
+  # }
 end

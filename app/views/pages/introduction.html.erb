@@ -1,0 +1,77 @@
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  @media only screen and (min-width: 320px) {
+    .ul-list-features-product {
+      margin-left: 20px;
+    }
+
+    #landing-col-green {
+      background-color: #0f9d58;
+      padding: 30px;
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+    }
+
+    #landing-col-blue {
+      background-color: #034fff;
+      padding: 30px;
+      text-align: justify;
+      color: white;
+    }
+
+    .landing-row {
+      margin: 0;
+      padding: 0;
+    }
+
+    .col .s12 .landing-col-s12 {
+      padding: 0;
+    }
+
+    .landing-page-container {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  @media only screen and (min-width: 600px) {
+    #landing-col-green {
+      color: yellow;
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+    .ul-list-features-product {
+      margin-left: 100px;
+      color: #ff9100;
+      font-size: 18px;
+    }
+  }
+</style>
+
+<div class="landing-page-container">
+
+  <div class="row landing-row">
+    <div class="col s12 landing-col-s12">
+      <%= image_tag @landing_page.cover_image, style: 'width: 100%; height: auto;vertical-align:top;' %>
+    </div>
+  </div>
+
+  <div class="row landing-row">
+    <div class="col s12 landing-col-s12" id="landing-col-green">
+      <%= @landing_page.title %>
+    </div>
+  </div>
+
+  <div class="row landing-row">
+    <div class="col s12 landing-col-s12" id="landing-col-blue">
+      <%= @landing_page.content.html_safe %>
+    </div>
+  </div>
+</div>

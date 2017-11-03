@@ -1,0 +1,128 @@
+<div class="row"></div>
+
+<div class="container" id="customize-container">
+  <div class="row row-space-home-page"></div>
+
+  <div class="row">
+    <% if order.present? %>
+        <div class="col s12" id="contain-order-show">
+          <div class="card">
+            <div class="headers-message-select-method-order">
+              Order number: #<%= order.order_number %>
+            </div>
+
+            <div class="card-content" id="card-contain-order">
+              <div class="row table-preview-order">
+                <table>
+                  <thead>
+                  <tr>
+                    <th class="mail-order-th" id="th-table-item-title">Items</th>
+                    <th class="mail-order-th-name">Title</th>
+                    <th class="center mail-order-th">Quantity</th>
+                    <th class="mail-order-th">Price</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  <% order.order_items.each do |order_item| %>
+                      <tr>
+                        <td id="td-table-image-item"><%= image_tag order_item.product.image, class: 'thumbnail-image-line-item-cart' %></td>
+                        <td>
+                          <%= link_to order_item.product.name, products_path(order_item.product), target: :_blank %>
+                        </td>
+                        <td class="center"><%= order_item.quantity %></td>
+                        <td>$<%= order_item.total_price %></td>
+                      </tr>
+                  <% end %>
+
+                  <tr class="total_line">
+                    <td>&nbsp;</td>
+                    <td class="td-table-space-total-order">&nbsp;</td>
+                    <td class="center"><b>Total</b></td>
+                    <td class="total_cell">$<b><%= order.total %></b></td>
+                  </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="headers-message-select-method-order">
+              Thanh toán ATM - Chuyển khoản Internet Banking
+            </div>
+            <div class="card-content">
+              <div class="row center" id="image-baokim">
+                <div class="col s12">
+                  <%= image_tag 'baokim.png', id: 'logo-baokim' %>
+                </div>
+              </div>
+              <div class="row center" id="form-submit-baokim-cart">
+                <div class="col s12">
+                  <%= form_tag bao_kim_submit_cart_path, method: :post do %>
+                      <%= hidden_field_tag 'order_id', order.id %>
+                      <%= submit_tag('Thanh toán ATM/Banking', :class => 'btn blue darken-2 order-button', :name => 'submit') %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="headers-message-select-method-order">
+              Payment by Visa/Master/Paypal
+            </div>
+            <div class="card-content">
+              <div id="method-visa-master-paypal">
+                <div class="row center">
+                  <div class="col s12">
+                    <%= image_tag 'logo-gateway.png', id: 'image-logo-payment' %>
+                  </div>
+                </div>
+                <div class="row center" id="row-credit-card">
+                  <div class="col s12">
+                    <%= form_tag 'https://www.2checkout.com/checkout/purchase' do %>
+                        <%= hidden_field_tag 'li_0_product_id', order.id %>
+                        <%= hidden_field_tag 'sid', ENV['TWO_CHECKOUT_SELLER_ID'] %>
+                        <%= hidden_field_tag 'mode', '2CO' %>
+                        <%= hidden_field_tag 'li_0_name', 'Order ' + order.order_number + ' by ' + @user.name %>
+                        <%= hidden_field_tag 'li_0_type', 'product' %>
+                        <%= hidden_field_tag 'li_0_price', order.total %>
+                        <%= hidden_field_tag 'li_0_quantity', '1' %>
+                        <%= hidden_field_tag 'currency_code', 'USD' %>
+                        <%= hidden_field_tag 'card_holder_name', @user.name %>
+                        <%= hidden_field_tag 'email', @user.email %>
+                        <%= hidden_field_tag 'street_address', @user.address %>
+                        <% if @user.address2.blank? %>
+                            <%= hidden_field_tag 'street_address2', @user.address %>
+                        <% else %>
+                            <%= hidden_field_tag 'street_address2', @user.address2 %>
+                        <% end %>
+                        <%= hidden_field_tag 'city', @user.city %>
+                        <% if @user.state.blank? %>
+                            <%= hidden_field_tag 'state', @user.city %>
+                        <% else %>
+                            <%= hidden_field_tag 'state', @user.state %>
+                        <% end %>
+                        <%= hidden_field_tag 'zip', @user.zipcode %>
+                        <%= hidden_field_tag 'country', @user.country %>
+                        <%= hidden_field_tag 'phone', @user.phone %>
+                        <%= submit_tag('Visa/Master Card', id: 'payment-co-button', :class => 'btn pink darken-2 order-button', :name => 'submit') %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="row center">
+                <div class="col s12">
+                  <%= link_to 'Paypal', paypal_express_checkout_path(order), class: 'btn amber accent-4 darken-3 order-button' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<script src="https://www.2checkout.com/static/checkout/javascript/direct.min.js"></script>

@@ -7,7 +7,7 @@
     </li>
 
     <li class="item_category_mobile">
-      <%= link_to root_path do %>
+      <%= link_to my_orders_path do %>
           <i class="material-icons md-24 icon-cate-in-mobile">history</i>History Orders
       <% end %>
     </li>
@@ -31,49 +31,39 @@
         </a>
 
         <ul class="right hide-on-med-and-down">
-          <li class="li-list-item-top-menu">
-            <ul class="ul-list-item-header">
-              <a class="link-to-item-header" href="#">
-                <li class="li-list-item-header">
-                  <i class="material-icons md-24 icon-in-top-menu">time_to_leave</i>
-                </li>
-                <li class="li-list-item-header">Cars</li>
-              </a>
-            </ul>
-          </li>
+          <% if @cart.present? %>
+              <li class="row cart-on-header">
+                <%= link_to carts_path + '/' + @cart.id.to_s, remote: true, id: 'cart-icon-on-header' do %>
+                    <div class="col s6 m6 l3 offset-l3 div-cart-line-count">
+                      <% if @cart.items_count.to_i > 0 %>
+                          <span class='circle cart-line-items-count' id="count-items-in-cart"><%= @cart.items_count %></span>
+                      <% else %>
+                          <span class='circle cart-line-items-count' id="count-items-in-cart">00</span>
+                      <% end %>
+                    </div>
+                    <div class="col s6 m6 l6">
+                      <i class="material-icons md-48" style="line-height: 1;">shopping_cart</i>
+                    </div>
+                <% end %>
+              </li>
+          <% end %>
 
-          <li class="li-list-item-top-menu">
-            <ul class="ul-list-item-header">
-              <a class="link-to-item-header" href="#">
-                <li class="li-list-item-header">
-                  <i class="material-icons md-24 icon-in-top-menu">settings</i>
-                </li>
-                <li class="li-list-item-header">Machines</li>
-              </a>
-            </ul>
-          </li>
-
-          <li class="li-list-item-top-menu">
-            <ul class="ul-list-item-header">
-              <a class="link-to-item-header" href="#">
-                <li class="li-list-item-header">
-                  <i class="material-icons md-24 icon-in-top-menu">library_books</i>
-                </li>
-                <li class="li-list-item-header">Books</li>
-              </a>
-            </ul>
-          </li>
-
-          <li class="li-list-item-top-menu">
-            <ul class="ul-list-item-header">
-              <a class="link-to-item-header" href="#">
-                <li class="li-list-item-header">
-                  <i class="material-icons md-24 icon-in-top-menu">device_hub</i>
-                </li>
-                <li class="li-list-item-header">Products</li>
-              </a>
-            </ul>
-          </li>
+          <% TopMenu.all.sort_by {|e| e[:tag]}.each do |menu| %>
+              <% if menu.published %>
+                  <li class="li-list-item-top-menu">
+                    <ul class="ul-list-item-header">
+                      <%= link_to menu.link, class: 'link-to-item-header' do %>
+                          <li class="li-list-item-header">
+                            <i class="material-icons md-24 icon-in-top-menu"><%= menu.icon %></i>
+                          </li>
+                          <li class="li-list-item-header">
+                            <%= menu.title %>
+                          </li>
+                      <% end %>
+                    </ul>
+                  </li>
+              <% end %>
+          <% end %>
 
           <% if !user_signed_in? %>
               <li class="li-list-item-top-menu">
@@ -155,17 +145,39 @@
                 <% end %>
               </li>
               <li class="item_category_mobile">
-                <%= link_to root_path do %>
+                <%= link_to my_orders_path do %>
                     <i class="material-icons md-24 icon-cate-in-mobile">history</i>History Order
                 <% end %>
               </li>
               <li class="divider"></li>
+
               <li class="item_category_mobile">
                 <%= link_to destroy_user_session_path, method: :delete, title: 'Logout' do %>
                     <i class="material-icons md-24 icon-cate-in-mobile">settings_power</i>Logout
                 <% end %>
               </li>
           <% end %>
+
+          <% if @cart.present? %>
+              <li class="divider"></li>
+              <li class="item_category_mobile">
+                <%= link_to carts_path + '/' + @cart.id.to_s, remote: true, id: 'cart-icon-on-header-menu' do %>
+                    <i class="material-icons md-24 icon-cate-in-mobile" style="color: darkorange;">shopping_cart</i>
+                    <span style="color: darkorange;">Cart (</span><span style="color: darkorange;" id="count-items-in-cart-menu"><%= @cart.items_count.to_s %></span><span style="color: darkorange;">)</span>
+                <% end %>
+              </li>
+          <% end %>
+
+          <% TopMenu.all.sort_by {|e| e[:tag]}.each do |menu| %>
+              <% if menu.published %>
+                  <li class="item_category_mobile">
+                    <%= link_to menu.link do %>
+                        <i class="material-icons md-24 icon-cate-in-mobile"><%= menu.icon %></i><%= menu.title %>
+                    <% end %>
+                  </li>
+              <% end %>
+          <% end %>
+
         </ul>
       </div>
     </div>

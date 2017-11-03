@@ -1,0 +1,13 @@
+<div class="container" id="customize-home-container">
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <% if @products.count > 0 %>
+      <div class="row">
+        <%= render partial: 'shared/history_products' %>
+      </div>
+  <% end %>
+
+  <div class="row"></div>
+  <div class="row"></div>
+</div>

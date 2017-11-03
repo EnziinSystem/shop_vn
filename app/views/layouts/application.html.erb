@@ -7,23 +7,54 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 
+  <%= yield :head %>
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
+  <link rel="stylesheet" type="text/css" href="/components/stylesheets/jquery.countdown.css">
+  <script type="text/javascript" src="/components/javascripts/jquery.plugin.js"></script>
+  <script type="text/javascript" src="/components/javascripts/jquery.countdown.js"></script>
+
+  <script src="//load.sumome.com/" data-sumo-site-id="ce72dfc40e9467c5f49fea8c28e569851a645454d611fa0eba272df92f4b8471" async="async"></script>
 </head>
 
 <body>
-    <%= render partial: 'shared/header' %>
-    <main>
-      <%= yield %>
-    </main>
-    <%= render partial: 'shared/footer' %>
+<%= render partial: 'shared/header' %>
+<%= render partial: 'shared/message' %>
+
+<div class="container">
+  <div id="modal-cart" class="modal">
+    <div class="modal-header">
+      <div id="title-cart-modal">
+        <i class="material-icons md-36">shopping_cart</i>
+        <div id="text-cart-header">Your cart</div>
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="cart">
+        <% if @cart %>
+            <% unless @cart.order_items.empty? %>
+                <%= render @cart %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <%= yield %>
+</main>
+<%= render partial: 'shared/footer' %>
 </body>
 
 <script>
     $(document).ready(function () {
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
+
+        $('.modal').modal();
     });
 </script>
 </html>

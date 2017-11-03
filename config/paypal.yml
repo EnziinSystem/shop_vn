@@ -1,0 +1,13 @@
+development:
+  mode: 'development'
+  login: "johansirius_api1.gmail.com"
+  password: "8HEGUND6PQZGURRX"
+  signature: "AyQg0ElcRUdBrugYSQ20ZUYNE.lpAegmnhZiwrFW1XP0ggo-r0CRMKDl"
+
+production:
+  mode: 'production'
+  login: "johansirius_api1.gmail.com"
+  password: "8HEGUND6PQZGURRX"
+  signature: "AyQg0ElcRUdBrugYSQ20ZUYNE.lpAegmnhZiwrFW1XP0ggo-r0CRMKDl"
+
+#Warning: remove space in keys.

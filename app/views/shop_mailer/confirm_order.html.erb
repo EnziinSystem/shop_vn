@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  <style>
+    .mail-order-th {
+      min-width: 100px;
+      text-align: left;
+    }
+
+    .mail-order-th-name {
+      min-width: 100px;
+      text-align: left;
+    }
+
+    .card {
+      position: relative;
+      margin: 0.5rem 0 1rem 0;
+      background-color: #f3f3f3;
+      transition: box-shadow .25s;
+      border-radius: 2px;
+    }
+
+    .card .card-image {
+      display: block;
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .card .card-content {
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 0 0 2px 2px;
+    }
+
+    .container {
+      margin-left: 10px;
+      width: 98%;
+      max-width: 1300px;
+    }
+
+    .title-order-page {
+      color: white;
+      background-color: darkcyan;
+      padding: 10px 15px;
+      font-size: 20px;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="title-order-page">
+      Confirm the order
+    </div>
+    <div class="card-content">
+      <p>Hello,</p>
+      <p>Please click the link bellow for confirm the order, The link will expire after 24-hour duration:</p>
+
+      <p><%= link_to 'CONFIRM THE ORDER', root_url + "cart-confirm-email?email=#{@email}&product=#{@product.id.to_s}&token_key=#{@token_key}&language=#{@language}&time=#{@time}", target: :_blank %></p>
+
+      <% if @new_user %>
+          <p>After confirm the order, you can login with the account:</p>
+
+          <p>Username: <strong><%= @email %></strong></p>
+
+          <p>Password: <strong><%= @token_key %></strong></p>
+
+          <p>Please change password at the first login.</p>
+      <% end %>
+
+      <table>
+        <thead>
+        <tr>
+          <th class="mail-order-th-name" style="text-align: center;">Name</th>
+          <th class="mail-order-th" style="text-align: center;">Quantity</th>
+          <th class="mail-order-th" style="text-align: center;">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @confirm_cart.order_items.each do |order_item| %>
+            <tr>
+              <td><%= link_to @product.name, @product %></td>
+              <td style="text-align: center;"><%= order_item.quantity.to_s %></td>
+              <td>$<%= order_item.total_price.to_s %></td>
+            </tr>
+        <% end %>
+        <tr class="total_line">
+          <td></td>
+          <td style="text-align: center;">Total</td>
+          <td class="total_cell">$<%= number_to_currency(@confirm_cart.total_price) %></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>Thank you!</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

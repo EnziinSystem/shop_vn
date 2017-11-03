@@ -1,0 +1,25 @@
+<div class="container" id="customize-container">
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <div class="row">
+    <% if @cart.present? %>
+        <% unless @cart.order_items.empty? %>
+            <div class="col s12 m12 l10 offset-l1" id="card-show-cart-no-modal">
+              <div class="card">
+                <div class="title-order-page">
+                  Your cart
+                </div>
+                <div class="card-content">
+                  <div class="cart">
+                    <%= render @cart %>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% else %>
+        <p>The cart empty!</p>
+    <% end %>
+  </div>
+</div>

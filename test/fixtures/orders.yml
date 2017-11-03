@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  order_number: MyString
+  total: 9.99
+  payment_type: MyString
+  status: MyString
+  shipping_fee: 9.99
+  tax_fee: 9.99
+  token_key: MyString
+
+two:
+  user: two
+  order_number: MyString
+  total: 9.99
+  payment_type: MyString
+  status: MyString
+  shipping_fee: 9.99
+  tax_fee: 9.99
+  token_key: MyString

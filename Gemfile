@@ -71,6 +71,25 @@ gem 'babosa', '~> 1.0', '>= 1.0.2'
 
 gem 'friendly_id', '5.2.1'
 
+gem 'activemerchant', '~> 1.74'
+gem 'twocheckout', '~> 0.4.0'
+
+gem 'sidekiq', '5.0.0'
+gem 'redis', '3.3.3'
+gem 'redis-namespace', '1.5.3'
+gem 'daemons', '~> 1.2', '>= 1.2.5'
+
+gem 'whenever', :require => false
+
+group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
