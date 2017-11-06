@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'jquery-rails'
-gem 'materialize-sass', '0.100.2'
+gem 'materialize-sass'
 
 gem 'toastr-rails'
 gem 'font-awesome-rails'
