@@ -8,7 +8,7 @@ class CartsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
-  #http://shop.com/carts/confirm-email?email=oceandemy@gmail.com&product=7&token_key=1C35AA362BC46AB90D2612476BEFD91D&language=English&time=1509338864
+  #http://shop.enziin.com/carts/confirm-email?email=oceandemy@gmail.com&product=7&token_key=1C35AA362BC46AB90D2612476BEFD91D&language=English&time=1509338864
 
   def confirm_email
     email = params[:email].strip

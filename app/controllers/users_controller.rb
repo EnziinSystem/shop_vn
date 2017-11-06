@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # http://shop.com/check-user?email=kevin@enziin.com
+  # http://shop.enziin.com/check-user?email=kevin@enziin.com
   # 0 : unregister
   # 1 : user exist and no require token OTP
   # 2 : user exist and require token OTP

@@ -83,7 +83,7 @@ CREATE TABLE `admin_users` (
 
 LOCK TABLES `admin_users` WRITE;
 /*!40000 ALTER TABLE `admin_users` DISABLE KEYS */;
-INSERT INTO `admin_users` VALUES (1,'admin@shop.com','$2a$10$lxOZE4bmOy2HbcgtRL1YAenp/m42o2jBxLCkeHOFVjpVeSJbrLkh.',NULL,NULL,NULL,9,'2017-11-03 03:18:04','2017-11-02 10:41:28','172.17.0.1','172.17.0.1','2017-10-20 06:24:04','2017-11-03 03:18:04','6l6v5gnzscyim6kc',0);
+INSERT INTO `admin_users` VALUES (1,'admin@shop.enziin.com','$2a$10$lxOZE4bmOy2HbcgtRL1YAenp/m42o2jBxLCkeHOFVjpVeSJbrLkh.',NULL,NULL,NULL,9,'2017-11-03 03:18:04','2017-11-02 10:41:28','172.17.0.1','172.17.0.1','2017-10-20 06:24:04','2017-11-03 03:18:04','6l6v5gnzscyim6kc',0);
 /*!40000 ALTER TABLE `admin_users` ENABLE KEYS */;
 UNLOCK TABLES;
 

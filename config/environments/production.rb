@@ -6,6 +6,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 1, 500 * 1024)
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -23,7 +25,9 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
+  config.public_file_server.enabled = true
+  #ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -118,14 +122,14 @@ Rails.application.configure do
   #     }
   # }
 
-  config.action_mailer.default_url_options = {host: 'shop.com'}
+  config.action_mailer.default_url_options = {host: 'shop.enziin.com'}
 
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
       address: 'smtp.gmail.com',
       port: 587,
-      domain: 'shop.com',
+      domain: 'shop.enziin.com',
       user_name: 'oceandemy@gmail.com',
       password: 'mcpmqfyfutrtfqcp',
       authentication: 'plain',

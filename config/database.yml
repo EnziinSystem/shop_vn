@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: shop_db
-  username: shop
-  password: <%= ENV['SHOP_DATABASE_PASSWORD'] %>
+  username: <%= ENV['ADMIN_USER_DATABASE'] %>
+  password: <%= ENV['ADMIN_PASSWORD_DATABASE'] %>

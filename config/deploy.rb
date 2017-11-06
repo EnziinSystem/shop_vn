@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.0"
 
-set :repo_url,        'https://EnziinSystem:7SM9kCU3Mdr9otqq@bitbucket.org/EnziinSystem/shop.git'
+set :repo_url,        'https://enziin-academy:hocviencongnghe@bitbucket.org/enziin-academy/shop.git'
 set :application,     'shop'
 
 set :user,            'kevin'
@@ -21,7 +21,7 @@ set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.error.log"
 set :puma_error_log,  "#{release_path}/log/puma.access.log"
 
-set :ssh_options,     { forward_agent: true, user: fetch(:user), auth_methods: %w(publickey), keys: %w(/home/kevin/.ssh/id_rsa) }
+set :ssh_options,     { forward_agent: true, user: fetch(:user), auth_methods: %w(publickey), keys: %w(/home/developer/.ssh/id_rsa) }
 #set  :ssh_options, { user: fetch(:user),  forward_agent: false, auth_methods: %w(password), password: fetch(:password) }
 
 set :puma_preload_app, true

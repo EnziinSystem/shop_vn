@@ -1,5 +1,5 @@
 class ShopMailer < ActionMailer::Base
-  default from: 'Super Shop <admin@shop.com>'
+  default from: 'Super Shop <admin@shop.enziin.com>'
 
   def charge_money(user)
     @user = user

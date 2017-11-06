@@ -34,17 +34,21 @@ BAO_KIM_API_PASSWORD: 'xxxxxxxxxxxxxx'
 BAO_KIM_PAYMENT_CART_URL: 'https://www.baokim.vn/payment/order/version11'
 BAO_KIM_BUSINESS_ACCOUNT: 'enziinsystem@gmail.com'
 
-BAO_KIM_BPN_LISTENER: 'http://shop.com/orders/payments/bao-kim/bpn'
+BAO_KIM_BPN_LISTENER: 'http://shop.enziin.com/orders/payments/bao-kim/bpn'
 BAO_KIM_BPN_VERIFY: 'https://www.baokim.vn/bpn/verify'
 
-BAO_KIM_SUCCESS_CART_URL: 'http://shop.com/orders/payments/bao-kim/success-cart'
-BAO_KIM_CANCEL_CART_URL: 'http://shop.com/orders'
-BAO_KIM_DETAIL_CART_URL: 'http://shop.com/orders'
+BAO_KIM_SUCCESS_CART_URL: 'http://shop.enziin.com/orders/payments/bao-kim/success-cart'
+BAO_KIM_CANCEL_CART_URL: 'http://shop.enziin.com/orders'
+BAO_KIM_DETAIL_CART_URL: 'http://shop.enziin.com/orders'
 
 RATE_USD_TO_VND: '22000'
 
 FACEBOOK_APP_ID_SHARE_OG_META: '1885108544849776'
 
+ADMIN_USER_DATABASE: 'kevin'
+ADMIN_PASSWORD_DATABASE: 'VKD132djsdIUIWCKS'
+
+SECRET_KEY_BASE: '2bdcea2dafbe23545768fnghkjhltg3a54580a260ac59aa66fc04e8b79d3b7fbf4e882386dd5f38305bb9ff1ec613ddc91707522d2a1d2f55e6'
 
 
 
