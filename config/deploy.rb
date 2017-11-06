@@ -1,11 +1,11 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.0"
 
-set :repo_url,        'https://enziin-academy:hocviencongnghe@bitbucket.org/enziin-academy/shop.git'
+set :repo_url,        'https://enziin-academy:designNETWORK!$@bitbucket.org/enziin-academy/shop.git'
 set :application,     'shop'
 
 set :user,            'kevin'
-set :password,        'KJFJ423dfsdjJWIEWO'
+set :password,        'IJIEOMCS4839dkksfq'
 
 set :puma_threads,    [4, 16]
 set :puma_workers,    1
