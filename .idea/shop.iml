@@ -254,7 +254,6 @@
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.1.5, Remote-rvm:ruby-2.4.2-p198) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.1.1, Remote-rvm:ruby-2.4.2-p198) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.6.6, Remote-rvm:ruby-2.4.2-p198) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="materialize-sass (v0.100.2, Remote-rvm:ruby-2.4.2-p198) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="method_source (v0.9.0, Remote-rvm:ruby-2.4.2-p198) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v2.99.3, Remote-rvm:ruby-2.4.2-p198) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mimemagic (v0.3.2, Remote-rvm:ruby-2.4.2-p198) [gem]" level="application" />
