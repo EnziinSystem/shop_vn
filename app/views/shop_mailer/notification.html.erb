@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  <style>
+    .card {
+      position: relative;
+      margin: 0.5rem 0 1rem 0;
+      background-color: #f3f3f3;
+      transition: box-shadow .25s;
+      border-radius: 2px;
+    }
+
+    .card .card-image {
+      display: block;
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .card .card-content {
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 0 0 2px 2px;
+    }
+
+    .container {
+      margin-left: 10px;
+      width: 98%;
+      max-width: 1300px;
+    }
+
+    .title-order-page {
+      color: white;
+      background-color: darkcyan;
+      padding: 10px 15px;
+      font-size: 20px;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="title-order-page">
+      <%= @title %>
+    </div>
+    <div class="card-content">
+      <p style="color: red;">********* EMAIL THỬ NGHIỆM *********</p>
+
+      <p>Chào bạn, @email</p>
+
+      <p>Bạn nhận được email này bởi vì bạn đã nạp tiền thành công từ website của chúng tôi.</p>
+
+      <p>Số tiền là: <%= @deposit %> đồng.</p>
+
+      <p>Vui lòng liên hệ với chúng tôi nếu bạn cần hỗ trợ.</p>
+
+      <p>Xin cảm ơn bạn!</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
