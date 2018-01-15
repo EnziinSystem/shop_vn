@@ -65,9 +65,6 @@ ActiveAdmin.register User do
       f.input :zipcode
       f.input :country, as: :string
       f.input :language
-      f.input :failed_attempts
-      f.input :unlock_token
-      f.input :locked_at
     end
     actions
   end
