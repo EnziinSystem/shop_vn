@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   permit_params :id, :name, :email, :password, :password_confirmation, :address, :address2, :phone,
-                :state, :city, :zipcode, :country, :fields, :language, :created_at, :updated_at,
+                :state, :city, :zipcode, :country, :language, :created_at, :updated_at,
                 :failed_attempts, :unlock_token, :locked_at
 
   filter :name
@@ -46,7 +46,6 @@ ActiveAdmin.register User do
       row :zipcode
       row :country
       row :language
-      row :fields
       row :created_at
       row :updated_at
     end
@@ -66,7 +65,6 @@ ActiveAdmin.register User do
       f.input :zipcode
       f.input :country, as: :string
       f.input :language
-      f.input :fields
       f.input :failed_attempts
       f.input :unlock_token
       f.input :locked_at
