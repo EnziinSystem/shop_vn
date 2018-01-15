@@ -92,7 +92,7 @@ Rails.application.configure do
       port: 587,
       domain: 'shop.enziin.com',
       user_name: 'oceandemy@gmail.com',
-      password: 'mcpmqfyfutrtfqcp',
+      password: 'torglpmshtsyjeyr',
       authentication: 'plain',
       enable_starttls_auto: true
   }
