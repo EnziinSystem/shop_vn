@@ -82,7 +82,7 @@
                 </div>
                 <div class="row center" id="row-credit-card">
                   <div class="col s12">
-                    <%= form_tag 'https://www.2checkout.com/checkout/purchase' do %>
+                    <%= form_tag 'https://sandbox.2checkout.com/checkout/purchase' do %>
                         <%= hidden_field_tag 'li_0_product_id', order.id %>
                         <%= hidden_field_tag 'sid', ENV['TWO_CHECKOUT_SELLER_ID'] %>
                         <%= hidden_field_tag 'mode', '2CO' %>

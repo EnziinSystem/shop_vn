@@ -6,8 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
-
-/config/application.yml
+/bundle
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -15,7 +14,35 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
 /node_modules
 /yarn-error.log
 
+/public/sitemaps
+/public/assets
+/public/packs
+/public/packs-test
+
 .byebug_history
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/db/seeds.rb
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+/volumes
+/import
+/export
+/.idea
+
+Dockerfile
+docker-entrypoint.sh
